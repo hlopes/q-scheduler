@@ -9,7 +9,7 @@ import jakarta.transaction.Transactional;
 public class TaskBean {
 
     @Transactional
-    @Scheduled(every = "10s", identity = "task-job")
+//    @Scheduled(every = "10s", identity = "task-job")
     void schedule() {
         Task task = new Task();
         task.persist();

@@ -1,7 +1,6 @@
 package org.acme.scheduler;
 
 import io.quarkus.logging.Log;
-import io.quarkus.scheduler.Scheduled;
 import io.quarkus.scheduler.ScheduledExecution;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -15,19 +14,19 @@ public class CounterBean {
         return counter.get();
     }
 
-    @Scheduled(every = "10s")
+    //    @Scheduled(every = "10s")
     void increment() {
         counter.incrementAndGet();
         Log.info("### Every 10 s");
     }
 
-    @Scheduled(cron = "0 15 10 * * ?")
+    //    @Scheduled(cron = "0 15 10 * * ?")
     void cronJob(ScheduledExecution execution) {
         counter.incrementAndGet();
         Log.info("### " + execution.getScheduledFireTime());
     }
 
-    @Scheduled(cron = "{cron.expr}")
+    //    @Scheduled(cron = "{cron.expr}")
     void cronJobWithExpressionInConfig() {
         counter.incrementAndGet();
         Log.info("### Cron expression configured in application.properties");
